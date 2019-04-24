@@ -1,37 +1,22 @@
 <template>
-  <div>
-    <el-button @click="show = !show">Click Me</el-button>
-
-    <div style="display: flex; margin-top: 20px; height: 100px;">
-      <transition name="el-fade-in-linear">
-        <div v-show="show" class="transition-box">.el-fade-in-linear</div>
-      </transition>
-      <transition name="el-fade-in">
-        <div v-show="show" class="transition-box">.el-fade-in</div>
-      </transition>
-    </div>
-  </div>
+  <el-container>
+    <el-header>Header</el-header>
+    <el-main>
+      <HelloWorld msg="Hello, World"></HelloWorld>
+    </el-main>
+  </el-container>
 </template>
 
-<script>
-  export default {
-    data: () => ({
-      show: true
-    })
-  }
+<script lang="ts">
+  import Vue from 'vue';
+  import HelloWorld from './components/HelloWorld.vue';
+  export default Vue.extend({
+    name: 'App',
+    components: {
+      HelloWorld
+    }
+  });
 </script>
 
 <style>
-  .transition-box {
-    margin-bottom: 10px;
-    width: 200px;
-    height: 100px;
-    border-radius: 4px;
-    background-color: #409EFF;
-    text-align: center;
-    color: #fff;
-    padding: 40px 20px;
-    box-sizing: border-box;
-    margin-right: 20px;
-  }
 </style>

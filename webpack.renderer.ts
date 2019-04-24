@@ -9,7 +9,6 @@ const isProd = baseConfig.isProd;
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 export default <webpack.Configuration> {
     entry: './src/renderer.ts',
@@ -50,9 +49,6 @@ export default <webpack.Configuration> {
                 'process.env.NODE_ENV': `process.env.NODE_ENV`,
                 'process.env.PUBLIC_PATH': JSON.stringify(publicPath)
             }),
-            new HtmlWebpackPlugin({
-                templateContent: "<div id='app'></div>"
-            })
         ];
         if (isProd) {
             plugins.push(new MiniCssExtractPlugin({

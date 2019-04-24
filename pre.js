@@ -21,4 +21,8 @@ async function deleteDirectory(path, self) {
 }
 
 // 清空编译文件夹
-deleteDirectory('build', false);
+deleteDirectory('build', false).then(function () {
+    fs.copyFileSync('src/index.html', 'build/index.html');
+}).catch(function (err) {
+    console.log(err);
+});
