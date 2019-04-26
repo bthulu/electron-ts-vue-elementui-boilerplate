@@ -4,6 +4,7 @@
   "description": "electron boilerplate write by typescript, use vue and elementUI",
   "author": "张家港市多米亿科技有限公司",
   "scripts": {
+    "build-dll": "cross-env NODE_ENV=development webpack --config ./webpack.dll.ts --colors",
     "build-main": "cross-env NODE_ENV=production webpack --config ./webpack.main.ts --colors",
     "build-renderer": "cross-env NODE_ENV=production webpack --config webpack.renderer.ts --colors",
     "build": "node pre.js && concurrently \"npm run build-main\" \"npm run build-renderer\"",
@@ -28,7 +29,6 @@
     "electron": "^4.1.4",
     "electron-builder": "^20.39.0",
     "electron-debug": "^2.2.0",
-    "element-ui": "^2.7.2",
     "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "^0.6.0",
     "source-map-loader": "^0.2.4",
@@ -36,7 +36,6 @@
     "ts-node": "^8.1.0",
     "typescript": "^3.4.3",
     "url-loader": "^1.1.2",
-    "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
@@ -44,7 +43,10 @@
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.3.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "element-ui": "^2.8.2",
+    "vue": "^2.6.10"
+  },
   "main": "./build/main.min.js",
   "build": {
     "appId": "com.domiyi.boilerplate",

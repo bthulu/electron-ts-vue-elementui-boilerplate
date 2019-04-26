@@ -24,6 +24,7 @@
         // renderer process
         if (process.env.NODE_ENV === 'development') {
             let port = process.env.PORT || 3000;
+            scripts.push('../dll/renderer.dll.js');
             scripts.push('http://localhost:' + port + '/build/renderer.js');
         } else {
             scripts.push('renderer.min.js');

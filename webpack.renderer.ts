@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as fs from 'fs';
 import * as webpack from 'webpack';
 import {spawn} from 'child_process';
 import baseConfig from './webpack.base'
@@ -9,6 +10,11 @@ const isProd = baseConfig.isProd;
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const dll = path.join(__dirname, 'dll');
+if (!fs.existsSync(dll) || !fs.existsSync(path.join(dll, 'renderer.dll.json'))) {
+    console.log('The DLL files are missing. Sit back while we build them for you');
+    require("child_process").execSync('npm run build-dll');
+}
 
 export default <webpack.Configuration> {
     entry: './src/renderer.ts',
@@ -49,6 +55,11 @@ export default <webpack.Configuration> {
                 'process.env.NODE_ENV': `process.env.NODE_ENV`,
                 'process.env.PUBLIC_PATH': JSON.stringify(publicPath)
             }),
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require('./dll/renderer.dll.json'),
+                sourceType: 'var'
+            })
         ];
         if (isProd) {
             plugins.push(new MiniCssExtractPlugin({
