@@ -9,7 +9,7 @@ const publicPath = baseConfig.publicPath;
 const isProd = baseConfig.isProd;
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-let MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const dll = path.join(__dirname, 'dll');
 if (!fs.existsSync(dll) || !fs.existsSync(path.join(dll, 'renderer.dll.json'))) {
     console.log('The DLL files are missing. Sit back while we build them for you');

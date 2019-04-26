@@ -4,7 +4,7 @@
   "description": "electron boilerplate write by typescript, use vue and elementUI",
   "author": "张家港市多米亿科技有限公司",
   "scripts": {
-    "build-dll": "cross-env NODE_ENV=development webpack --config ./webpack.dll.ts --colors",
+    "build-dll": "webpack --config ./webpack.dll.ts --colors",
     "build-main": "cross-env NODE_ENV=production webpack --config ./webpack.main.ts --colors",
     "build-renderer": "cross-env NODE_ENV=production webpack --config webpack.renderer.ts --colors",
     "build": "node pre.js && concurrently \"npm run build-main\" \"npm run build-renderer\"",
